@@ -1,0 +1,22 @@
+<configuration status="INFO">  
+  <appenders>
+    <RollingFile name="calllog" fileName="logs/sdkService-servicecall.log"  
+                 filePattern="logs/sdkService-servicecall.log.%d{MM-dd-yyyy 'at' HH:mm:ss}-%i.gz">  
+      <PatternLayout pattern="%d{yyyy.MM.dd 'at' HH:mm:ss z} %-5level %class{36} %L %M - %msg%n"/>  
+      <SizeBasedTriggeringPolicy size="50 MB" />  
+    </RollingFile>
+    <RollingFile name="log" fileName="logs/sdk_test.log"  
+                 filePattern="logs/sdk_test.log.%d{MM-dd-yyyy 'at' HH:mm:ss}-%i.gz">  
+      <PatternLayout pattern="%d{yyyy.MM.dd 'at' HH:mm:ss z} %-5level %class{36} %L %M - %msg%n"/>  
+      <SizeBasedTriggeringPolicy size="50 MB" />  
+    </RollingFile>  
+  </appenders>  
+  <loggers>
+    <logger name="com.whaty.framework.dubbo.filter.CallLogFilter" level="INFO" additivity="false">
+  	<appender-ref ref="calllog"/>  
+    </logger>
+    <root level="ERROR">  
+      <appender-ref ref="log"/>  
+    </root>  
+  </loggers>  
+</configuration>
